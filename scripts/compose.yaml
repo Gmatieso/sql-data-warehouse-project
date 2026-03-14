@@ -9,3 +9,5 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "Str0ngPass!2026"
+    volume:
+      - /home/techg/Desktop/sql-data-warehouse-project/datasets:/datasets
