@@ -47,3 +47,20 @@ WITH (
 SELECT * FROM bronze.crm_sales_details;
 
 SELECT COUNT(*) FROM bronze.crm_sales_details;
+
+
+-- Quickly delete all rows from table, resetting it into an empty state 
+TRUNCATE TABLE bronze.erp_loc_a101;
+
+BULK INSERT bronze.erp_loc_a101
+FROM '/datasets/source_erp/LOC_A101.csv'
+WITH (
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ',',
+    TABLOCK,
+    ROWTERMINATOR = '\n'
+);
+
+SELECT * FROM bronze.erp_loc_a101;
+
+SELECT COUNT(*) FROM bronze.erp_loc_a101;
