@@ -31,15 +31,7 @@ GO
 USE DataWarehouse;
 GO
 
--- Create Schemas
-CREATE SCHEMA bronze;
-GO
 
-CREATE SCHEMA silver;
-GO
-
-CREATE SCHEMA gold;
-GO  
 
 
 -- Drop a table called 'bronze.erp_cust_az12' in schema 'dbo'
