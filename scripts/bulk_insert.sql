@@ -1,7 +1,14 @@
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS 
 BEGIN
-    PRINT '========================================================================'
-    PRINT 'Loading Bronze Layer'
+    PRINT '========================================================================';
+    PRINT 'Loading Bronze Layer';
+    PRINT '========================================================================';
+
+    PRINT '------------------------------------------------------------------------';
+    PRINT 'Loading CRM Tables';
+    PRINT '------------------------------------------------------------------------';
+
+    PRINT '>> Truncating Table: bronze.crm_cust_info';
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.crm_cust_info;
 
@@ -16,9 +23,9 @@ BEGIN
 
     -- SELECT * FROM bronze.crm_cust_info;
 
-    SELECT COUNT(*) FROM bronze.crm_cust_info;
+    -- SELECT COUNT(*) FROM bronze.crm_cust_info;
 
-
+    PRINT '>> Truncating Table: bronze.crm_prd_info';
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.crm_prd_info;
 
@@ -33,9 +40,9 @@ BEGIN
 
     -- SELECT * FROM bronze.crm_prd_info;
 
-    SELECT COUNT(*) FROM bronze.crm_prd_info;
+    -- SELECT COUNT(*) FROM bronze.crm_prd_info;
 
-
+    PRINT '>> Truncating Table: bronze.crm_sales_details';
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.crm_sales_details;
 
@@ -50,9 +57,13 @@ BEGIN
 
     -- SELECT * FROM bronze.crm_sales_details;
 
-    SELECT COUNT(*) FROM bronze.crm_sales_details;
+    -- SELECT COUNT(*) FROM bronze.crm_sales_details;
 
+    PRINT '------------------------------------------------------------------------';
+    PRINT 'Loading ERP Tables';
+    PRINT '------------------------------------------------------------------------';
 
+    PRINT '>> Truncating Table: bronze.erp_loc_a101';
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.erp_loc_a101;
 
@@ -67,9 +78,10 @@ BEGIN
 
     -- SELECT * FROM bronze.erp_loc_a101;
 
-    SELECT COUNT(*) FROM bronze.erp_loc_a101;
+    -- SELECT COUNT(*) FROM bronze.erp_loc_a101;
 
 
+    PRINT '>> Truncating Table: bronze.erp_cust_az12'
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.erp_cust_az12;
 
@@ -84,10 +96,10 @@ BEGIN
 
     -- SELECT * FROM bronze.erp_cust_az12;
 
-    SELECT COUNT(*) FROM bronze.erp_cust_az12;
+    -- SELECT COUNT(*) FROM bronze.erp_cust_az12;
 
 
-
+    PRINT '>> Truncating Table: bronze.erp_px_cat_g1v2'
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.erp_px_cat_g1v2;
 
@@ -102,7 +114,7 @@ BEGIN
 
     -- SELECT * FROM bronze.erp_px_cat_g1v2;
 
-    SELECT COUNT(*) FROM bronze.erp_px_cat_g1v2;
+    -- SELECT COUNT(*) FROM bronze.erp_px_cat_g1v2;
 
 END
 
