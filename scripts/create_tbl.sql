@@ -25,8 +25,8 @@ prd_key NVARCHAR(50),
 prd_name NVARCHAR(50),
 prd_cost INT,
 prd_line NVARCHAR(50),
-prd_start_dt DATE,
-prd_end_dt DATE
+prd_start_dt DATETIME,
+prd_end_dt DATETIME
 );
 
 -- Drop a table called 'bronze.crm_sales_details' in schema 'dbo'
@@ -38,9 +38,9 @@ CREATE TABLE bronze.crm_sales_details(
 sls_ord_num NVARCHAR(50),
 sls_prd_key NVARCHAR(50),
 sls_cust_id INT,
-sls_order_dt DATE,
-sls_ship_dt DATE,
-sls_due_dt DATE,
+sls_order_dt INT,
+sls_ship_dt INT,
+sls_due_dt INT,
 sls_sales INT,
 sls_quantity INT,
 sls_price INT
@@ -54,7 +54,7 @@ GO
 
 CREATE TABLE bronze.erp_cust_az12(
 cid NVARCHAR(50),
-bdate DATE,
+bdate DATETIME,
 gen NVARCHAR(50)
 )
 
