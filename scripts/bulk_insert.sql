@@ -12,6 +12,7 @@ BEGIN
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.crm_cust_info;
 
+    PRINT '>> INSERT DATA INTO: bronze.crm_cust_info';
     BULK INSERT bronze.crm_cust_info
     FROM '/datasets/source_crm/cust_info.csv'
     WITH (
@@ -29,6 +30,7 @@ BEGIN
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.crm_prd_info;
 
+    PRINT '>> INSERT DATA INTO: bronze.prd_info';
     BULK INSERT bronze.crm_prd_info
     FROM '/datasets/source_crm/prd_info.csv'
     WITH (
@@ -46,6 +48,7 @@ BEGIN
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.crm_sales_details;
 
+    PRINT '>> INSERT DATA INTO: bronze.sales_details';
     BULK INSERT bronze.crm_sales_details
     FROM '/datasets/source_crm/sales_details.csv'
     WITH (
@@ -67,6 +70,7 @@ BEGIN
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.erp_loc_a101;
 
+    PRINT '>> INSERT DATA INTO: bronze.erp_loc_a101';
     BULK INSERT bronze.erp_loc_a101
     FROM '/datasets/source_erp/LOC_A101.csv'
     WITH (
@@ -85,6 +89,7 @@ BEGIN
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.erp_cust_az12;
 
+    PRINT '>> INSERT DATA INTO: bronze.cust_az12';
     BULK INSERT bronze.erp_cust_az12
     FROM '/datasets/source_erp/CUST_AZ12.csv'
     WITH (
@@ -99,10 +104,11 @@ BEGIN
     -- SELECT COUNT(*) FROM bronze.erp_cust_az12;
 
 
-    PRINT '>> Truncating Table: bronze.erp_px_cat_g1v2'
+    PRINT '>> Truncating Table: bronze.erp_px_cat_g1v2';
     -- Quickly delete all rows from table, resetting it into an empty state 
     TRUNCATE TABLE bronze.erp_px_cat_g1v2;
 
+    PRINT '>> INSERT DATA INTO: bronze.erp_px_cat_g1v2';
     BULK INSERT bronze.erp_px_cat_g1v2
     FROM '/datasets/source_erp/PX_CAT_G1V2.csv'
     WITH (
