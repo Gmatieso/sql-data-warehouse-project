@@ -1,5 +1,6 @@
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS 
 BEGIN
+    DECLARE @start_time DATETIME, @end_time DATETIME;
     BEGIN TRY
         PRINT '========================================================================';
         PRINT 'Loading Bronze Layer';
@@ -8,7 +9,8 @@ BEGIN
         PRINT '------------------------------------------------------------------------';
         PRINT 'Loading CRM Tables';
         PRINT '------------------------------------------------------------------------';
-
+        
+        SET @start_time = GETDATE();
         PRINT '>> Truncating Table: bronze.crm_cust_info';
         -- Quickly delete all rows from table, resetting it into an empty state 
         TRUNCATE TABLE bronze.crm_cust_info;
@@ -27,6 +29,13 @@ BEGIN
 
         -- SELECT COUNT(*) FROM bronze.crm_cust_info;
 
+        SET @end_time = GETDATE();
+        
+        PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS VARCHAR) + 'seconds';
+        PRINT '----------------------------------------------------------------------------';
+
+
+        SET @start_time = GETDATE();
         PRINT '>> Truncating Table: bronze.crm_prd_info';
         -- Quickly delete all rows from table, resetting it into an empty state 
         TRUNCATE TABLE bronze.crm_prd_info;
@@ -45,6 +54,13 @@ BEGIN
 
         -- SELECT COUNT(*) FROM bronze.crm_prd_info;
 
+        SET @end_time = GETDATE();
+        PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS VARCHAR) + 'seconds';
+        PRINT '----------------------------------------------------------------------------';
+
+
+
+        SET @start_time = GETDATE();
         PRINT '>> Truncating Table: bronze.crm_sales_details';
         -- Quickly delete all rows from table, resetting it into an empty state 
         TRUNCATE TABLE bronze.crm_sales_details;
@@ -63,9 +79,16 @@ BEGIN
 
         -- SELECT COUNT(*) FROM bronze.crm_sales_details;
 
+        SET @end_time = GETDATE();
+        PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS VARCHAR) + 'seconds';
+       
+
         PRINT '------------------------------------------------------------------------';
         PRINT 'Loading ERP Tables';
         PRINT '------------------------------------------------------------------------';
+
+
+        SET @start_time = GETDATE();
 
         PRINT '>> Truncating Table: bronze.erp_loc_a101';
         -- Quickly delete all rows from table, resetting it into an empty state 
@@ -86,6 +109,13 @@ BEGIN
         -- SELECT COUNT(*) FROM bronze.erp_loc_a101;
 
 
+        SET @end_time = GETDATE();
+        PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS VARCHAR) + 'seconds';
+        PRINT '----------------------------------------------------------------------------';
+
+
+        SET @start_time = GETDATE();
+
         PRINT '>> Truncating Table: bronze.erp_cust_az12'
         -- Quickly delete all rows from table, resetting it into an empty state 
         TRUNCATE TABLE bronze.erp_cust_az12;
@@ -104,6 +134,12 @@ BEGIN
 
         -- SELECT COUNT(*) FROM bronze.erp_cust_az12;
 
+        SET @end_time = GETDATE();
+        PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS VARCHAR) + 'seconds';
+        PRINT '----------------------------------------------------------------------------';
+
+
+        SET @start_time = GETDATE();
 
         PRINT '>> Truncating Table: bronze.erp_px_cat_g1v2';
         -- Quickly delete all rows from table, resetting it into an empty state 
@@ -122,6 +158,10 @@ BEGIN
         -- SELECT * FROM bronze.erp_px_cat_g1v2;
 
         -- SELECT COUNT(*) FROM bronze.erp_px_cat_g1v2;
+
+        SET @end_time = GETDATE();
+        PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS VARCHAR) + 'seconds';
+        PRINT '----------------------------------------------------------------------------';
     END TRY
     BEGIN CATCH
         PRINT '===================================================================';
