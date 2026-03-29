@@ -5,7 +5,10 @@ SELECT
  TRIM(cst_firstname) AS cst_firstname,
  TRIM(cst_lastname) AS cst_lastname,
  cst_marital_status,
- cst_gndr,
+ CASE WHEN UPPER(cst_gndr) = 'F' THEN 'Female'
+     WHEN  UPPER(cst_gndr) = 'M' THEN 'Male'
+     ELSE  'n/a'
+END cst_gndr,
  cst_create_date
 FROM (
     SELECT 
