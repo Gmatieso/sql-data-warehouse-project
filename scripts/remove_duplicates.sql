@@ -5,7 +5,10 @@ SELECT
  cst_key,
  TRIM(cst_firstname) AS customer_firstname,
  TRIM(cst_lastname) AS customer_lastname,
- cst_marital_status,
+CASE WHEN UPPER(TRIM(cst_marital_status)) = 'S' THEN 'Single'
+     WHEN UPPER(TRIM(cst_marital_status)) = 'M' THEN 'Married'
+     ELSE  'n/a'
+    END  cst_marital_status,
  CASE WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
      WHEN  UPPER(TRIM(cst_gndr)) = 'M' THEN 'Male'
      ELSE  'n/a'
