@@ -6,8 +6,8 @@ SELECT
  TRIM(cst_firstname) AS customer_firstname,
  TRIM(cst_lastname) AS customer_lastname,
  cst_marital_status,
- CASE WHEN UPPER(cst_gndr) = 'F' THEN 'Female'
-     WHEN  UPPER(cst_gndr) = 'M' THEN 'Male'
+ CASE WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
+     WHEN  UPPER(TRIM(cst_gndr)) = 'M' THEN 'Male'
      ELSE  'n/a'
 END cst_gndr,
  cst_create_date
