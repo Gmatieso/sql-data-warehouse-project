@@ -1,9 +1,10 @@
 --  Filter to show  data that we only need
+
 SELECT 
  cst_id,
  cst_key,
- TRIM(cst_firstname) AS cst_firstname,
- TRIM(cst_lastname) AS cst_lastname,
+ TRIM(cst_firstname) AS customer_firstname,
+ TRIM(cst_lastname) AS customer_lastname,
  cst_marital_status,
  CASE WHEN UPPER(cst_gndr) = 'F' THEN 'Female'
      WHEN  UPPER(cst_gndr) = 'M' THEN 'Male'
