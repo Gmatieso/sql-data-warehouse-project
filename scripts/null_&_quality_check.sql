@@ -30,3 +30,12 @@ WHERE cst_lastname != TRIM(cst_lastname)
 SELECT cst_gndr 
 FROM bronze.crm_cust_info
 WHERE cst_gndr != TRIM(cst_gndr)
+
+
+SELECT cst_key
+FROM bronze.crm_cust_info
+WHERE cst_key != TRIM(cst_key)
+
+-- Data Standardization & Consistency
+SELECT DISTINCT  cst_gndr
+FROM bronze.crm_cust_info
